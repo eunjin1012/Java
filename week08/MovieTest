@@ -1,0 +1,44 @@
+package week08;
+
+public class Test01 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Movie s1=new Movie();
+		Movie s2=new Movie();
+		Movie s3=new Movie();
+		
+		s1.setTitle("기생충");
+		s1.setDirector("봉준호");
+		s1.setActor("송강호");
+		s1.setYear(2019);
+		
+		System.out.println("Title = "+s1.getTitle());
+		System.out.println("Director = "+s1.getDirector());
+		System.out.println("Actor = "+s1.getActor());
+		System.out.println("Year = "+s1.getYear());
+		System.out.println(" ");
+		
+		s2.setTitle("라라랜드");
+		s2.setDirector("데이미언");
+		s2.setActor("라이언");
+		s2.setYear(2016);
+		
+		System.out.println("Title = "+s2.getTitle());
+		System.out.println("Director = "+s2.getDirector());
+		System.out.println("Actor = "+s2.getActor());
+		System.out.println("Year = "+s2.getYear());
+		System.out.println(" ");
+		
+		s3.setTitle("어벤져스");
+		s3.setDirector("조스 웨던");
+		s3.setActor("로버트 다우니");
+		s3.setYear(2012);
+		
+		System.out.println("Title = "+s3.getTitle());
+		System.out.println("Director = "+s3.getDirector());
+		System.out.println("Actor = "+s3.getActor());
+		System.out.println("Year = "+s3.getYear());
+	}
+
+}
