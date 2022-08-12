@@ -1,0 +1,14 @@
+package week08;
+
+public class Test04 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Dice s1=new Dice();
+		
+		s1.setFace((int)(Math.random()*6)+1);
+		
+		System.out.println("주사위 숫자 : "+s1.getFace());
+	}
+
+}
