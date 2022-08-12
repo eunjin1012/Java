@@ -1,0 +1,45 @@
+package week08;
+
+import java.util.Scanner;
+
+abstract class Converter{
+	abstract protected double convert(double src);
+	abstract protected String srcString();
+	abstract protected String destString();
+	protected double ratio;
+	
+	public void run() {
+		Scanner scanner=new Scanner(System.in);
+		System.out.println(srcString()+"을"+destString()+"로 바꿉니다.");
+		System.out.println(srcString()+"을 입력하세요>> ");
+		double val=scanner.nextDouble();
+		double res=convert(val);
+		System.out.println("변환 결과 : "+res+destString()+"입니다.");
+		scanner.close();
+	}
+}
+class Won2Dollar extends Converter{
+	int dollar;
+	
+	public Won2Dollar(int dollar) {
+		this.dollar=dollar;
+	}
+	protected double convert(double val) {
+		return val/1200;
+	}
+	protected String destString() {
+		return "달러";
+	}
+	protected String srcString() {
+		return "원";
+	}
+}
+public class AbstractTest1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Won2Dollar toDollar=new Won2Dollar(1200);
+		toDollar.run();
+	}
+
+}
