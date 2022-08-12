@@ -1,0 +1,60 @@
+package week26;
+
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+
+public class Buttonactive extends JFrame{
+	private static final long serialVersionUID=1L;
+	Container contentPane;
+	JCheckBox [] button=new JCheckBox[2];
+	String [] names= {"버튼  비활성화", "버튼 감추기"};
+	JButton b1;
+	
+	Buttonactive(){
+		setTitle("CheckBox Button");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		contentPane=getContentPane();
+		contentPane.setLayout(new FlowLayout());
+		
+		for(int i=0; i<button.length; i++) {
+			button[i]=new JCheckBox(names[i]);
+			button[i].setBorderPainted(true);
+			contentPane.add(button[i]);
+			button[i].addItemListener(new MyItemListener());
+		}
+		
+		b1=new JButton("test button");
+		contentPane.add(b1);
+		
+		setSize(250, 200);
+		setVisible(true);
+	
+	}
+	class MyItemListener implements ItemListener{
+		public void itemStateChanged(ItemEvent e) {
+			if(e.getStateChange()==ItemEvent.DESELECTED)
+			{
+				b1.setEnabled(true);
+				b1.setVisible(true);
+				
+			}
+			
+			else if(button[0].isSelected())
+			{
+				b1.setEnabled(false);
+				
+			}
+			else {
+				b1.setVisible(false);
+			}
+			
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new Buttonactive();
+	}
+
+}
