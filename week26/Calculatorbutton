@@ -1,0 +1,89 @@
+package week26;
+
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+
+public class Calculatorbutton extends JFrame{
+	private static final long serialVersionUID=1L;
+	
+	
+	Calculatorbutton(){
+		setTitle("화폐 교환");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setContentPane(new MyPanel());
+		
+		setSize(300, 300);
+		setVisible(true);
+		
+	}
+	
+	class MyPanel extends JPanel{
+		
+		private static final long serialVersionUID=1L;
+		private int [] unit= {50000, 10000, 1000, 500, 100, 50, 10, 1};
+		private String[] text= {"금액", "오만원", "만원", "천원", "500원", "100원", "50원", "10원", "1원"};
+		private JLabel la=new JLabel();
+		private JButton b1=new JButton("계산");
+		private JTextField [] tf=new JTextField [text.length];
+		
+		
+		public MyPanel() {
+			setBackground(Color.CYAN);
+			setLayout(null);
+			
+			la=new JLabel(text[0]);
+			la.setSize(40, 20);
+			la.setLocation(30, 20);
+			add(la);
+			
+			tf[0]=new JTextField(30);
+			tf[0].setSize(100, 20);
+			tf[0].setLocation(90, 20);
+			add(tf[0]);
+			
+			b1.setSize(70, 20);
+			b1.setLocation(200, 20);
+			b1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					String input=tf[0].getText();
+					if(input.length()==0)
+						return;
+					
+					int money=Integer.parseInt(input);
+					int m;
+					
+					for(int i=0; i<unit.length; i++) {
+						m=money/unit[i];
+						tf[i+1].setText(Integer.toString(m));
+						if(m>0)
+							money=money%unit[i];
+						}
+					}
+				
+			});
+			add(b1);
+			
+			for(int i=1; i<text.length; i++) {
+				la=new JLabel(text[i]);
+				la.setHorizontalAlignment(JLabel.RIGHT);
+				la.setSize(50, 20);
+				la.setLocation(50, 50+(i*20));
+				
+				tf[i]=new JTextField(30);
+				tf[i].setHorizontalAlignment(JTextField.CENTER);
+				tf[i].setSize(70, 20);
+				tf[i].setLocation(120, 50+(i*20));
+				add(la);
+				add(tf[i]);
+			}
+			
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new Calculatorbutton();
+	}
+	
+}
