@@ -1,0 +1,82 @@
+package week26;
+
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+
+public class Changenumber extends JFrame{
+	JTextField jf=new JTextField(10);
+	JTextField jf2=new JTextField(10);
+	JRadioButton radio []=new JRadioButton[4];
+	String[] text= {"10진수", "2진수", "8진수", "16진수"};
+	
+	Changenumber(){
+		super("진법 변환");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Container c=getContentPane();
+		c.setLayout(new FlowLayout());
+		
+		ButtonGroup g=new ButtonGroup();
+		MyItemListener listener=new MyItemListener();
+		
+		jf2.setEditable(false);
+		
+		c.add(jf);
+		c.add(new JLabel(" == > "));
+		c.add(jf2);
+		
+		for(int i=0; i<radio.length; i++) {
+			radio[i]=new JRadioButton(text[i]);
+			radio[i].addItemListener(listener);
+			c.add(radio[i]);
+			g.add(radio[i]);
+		}
+		setSize(300, 150);
+		setVisible(true);
+		
+	}
+	
+	class MyItemListener implements ItemListener{
+		public void itemStateChanged(ItemEvent e) {
+			
+			if(e.getStateChange() !=ItemEvent.SELECTED)
+				return;
+			
+			int n;
+			String text=((JRadioButton)e.getItem()).getText();
+			try {
+				switch(text) {
+				case "10진수":
+					n=Integer.parseInt(jf.getText());
+					jf2.setText(Integer.toString(n));
+					break;
+				case "2진수":
+					n=Integer.parseInt(jf.getText());
+					jf2.setText(Integer.toBinaryString(n));
+					break;
+				case "8진수":
+					n=Integer.parseInt(jf.getText());
+					jf2.setText(Integer.toOctalString(n));
+					break;
+				case "16진수":
+					n=Integer.parseInt(jf.getText());
+					jf2.setText(Integer.toHexString(n));
+					break;
+					
+				}
+			}catch(NumberFormatException exp) {
+				System.out.println("Not an Integer.Enter an Integer/");
+			}
+		}
+		
+		
+
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new Changenumber();
+	}
+
+}
