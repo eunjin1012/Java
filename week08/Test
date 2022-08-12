@@ -1,0 +1,16 @@
+package week08;
+
+public class Test02 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Book s1=new Book();
+		
+		s1.setTitle("Java Programming");
+		s1.setAuthor("James");
+		
+		System.out.println(s1.getTitle());
+		System.out.println(s1.getAuthor());
+	}
+
+}
