@@ -1,0 +1,57 @@
+package week26;
+
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+
+public class Carcheckbox extends JFrame {
+	private static final long serialVersionUID=1L;
+	Container contentPane;
+	JCheckBox[] car=new JCheckBox[4];
+	String [] names= {"엔진오일 교환", "자동변속기오일교환", "에어콘필터교환", "타이어 교환"};
+	JLabel sumLabel;
+	int sum=0;
+	
+	Carcheckbox(){
+		setTitle("Carcheckbox");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		contentPane=getContentPane();
+		contentPane.setLayout(new FlowLayout());
+		
+		for(int i=0; i<car.length; i++) {
+			car[i]=new JCheckBox(names[i]);
+			car[i].setBorderPainted(true);
+			contentPane.add(car[i]);
+			car[i].addItemListener(new MyItemListener());
+		}
+		sumLabel=new JLabel("현재까지의 가격은 0원입니다.");
+		contentPane.add(sumLabel);
+		setSize(550, 200);
+		setVisible(true);
+	}
+
+	class MyItemListener implements ItemListener{
+		public void itemStateChanged(ItemEvent e) {
+			int selected=1;
+			if(e.getStateChange()==ItemEvent.SELECTED)
+				selected=1;
+			else
+				selected=-1;
+			if(e.getItem()==car[0])
+				sum=sum+selected*45000;
+			else if(e.getItem()==car[1])
+				sum=sum+selected*80000;
+			else if(e.getItem()==car[2])
+				sum=sum+selected*30000;
+			else
+				sum=sum+selected*100000;
+			sumLabel.setText("현재까지의 가격은 "+sum+"원 입니다.");
+			
+		}
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new Carcheckbox();
+	}
+
+}
