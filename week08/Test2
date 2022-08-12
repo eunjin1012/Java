@@ -1,0 +1,15 @@
+package week08;
+
+public class Test03 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Point s1=new Point();
+		
+		s1.setX(100);
+		s1.setY(200);
+		
+		System.out.println("("+s1.getX()+","+s1.getY()+")");
+	}
+
+}
